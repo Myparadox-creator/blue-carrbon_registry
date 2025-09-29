@@ -443,6 +443,29 @@
             
             setTimeout(() => navigate('metamask-page'), 500);
         });
+        function updateMetaMaskUI(status, text, address = null) {
+            const statusIndicator = document.getElementById('metamask-status');
+            const statusText = document.getElementById('metamask-text');
+            const connectBtn = document.getElementById('connect-metamask-btn');
+            const installLink = document.getElementById('install-metamask-link');
+            const claimBtn = document.getElementById('claim-credits-btn');
+
+            statusIndicator.className = `metamask-status-indicator ${status}`;
+            statusText.textContent = text;
+            claimBtn.disabled = status !== 'connected';
+            userAddress = address;
+
+            if (status === 'connected') {
+                connectBtn.style.display = 'none';
+                installLink.style.display = 'none';
+            } else if (status === 'disconnected') {
+                connectBtn.style.display = 'block';
+                installLink.style.display = 'none';
+            } else if (status === 'install') {
+                connectBtn.style.display = 'none';
+                installLink.style.display = 'block';
+            }
+        }
 async function connectMetaMask() {
     const statusIndicator = document.getElementById('metamask-status');
     const statusText = document.getElementById('metamask-text');
@@ -678,4 +701,5 @@ document.getElementById('claim-credits-btn').addEventListener('click', () => {
         }
     </script>
 </body>
+
 </html>
