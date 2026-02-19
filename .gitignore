@@ -1,0 +1,27 @@
+# OS files
+Thumbs.db
+.DS_Store
+desktop.ini
+
+# Editor / IDE
+.vscode/settings.json
+.idea/
+*.suo
+*.user
+
+# Environment & secrets
+.env
+.env.local
+.env.*.local
+
+# Dependency folders (if npm/node is ever added)
+node_modules/
+package-lock.json
+
+# Build output (if a bundler is ever added)
+dist/
+build/
+
+# Logs
+*.log
+npm-debug.log*
